@@ -1,10 +1,25 @@
 import os
 os.environ["QT_QPA_PLATFORM"] = "offscreen"
+from pathlib import Path
+import sys
 import pytest
-from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QApplication
 from PyQt6.QtGui import QKeyEvent
+from PyQt6.QtCore import Qt, QEvent
+
+# importar el tablero
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
 from game.tablero import Tablero
 
+@pytest.fixture(scope="session", autouse=True)
+def qapp():
+    """Asegura que exista un QApplication para todos los tests."""
+    app = QApplication.instance()
+    if app is None:
+        app = QApplication(sys.argv)
+    return app
 # -------------------------
 #     TESTS resaltar_celda
 # -------------------------
@@ -81,5 +96,3 @@ def test_keyPressEvent_tecla_Z_no_mueve():
 
     assert tablero.sel_fila == 2 and tablero.sel_columna == 4, \
         "La tecla Z debería no cambiar la selección."
-def test_dummy():
-    assert True

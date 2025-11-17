@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "GabrielPruebasUnitarias" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "GabrielPruebasUnitarias" ]
 
 jobs:
   test:
@@ -13,6 +13,15 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
+      
+    - name: Install Qt dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          libegl1 \
+          libgl1 \
+          libglu1-mesa \
+          libxcb-xinerama0
 
     - name: Set up Python
       uses: actions/setup-python@v4

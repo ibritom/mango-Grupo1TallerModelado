@@ -61,12 +61,12 @@ def test_2resaltar_celda(app):
 def test_3resaltar_celda(app):
     tablero = Tablero()
 
-    # Resaltar la celda (2,3)
-    tablero.resaltar_celda(2, 3)
+    # Resaltar la celda (3,3), para que la prueba falle
+    tablero.resaltar_celda(3, 3)
 
     estilo_seleccionado = tablero.celdas[2][3].styleSheet()
     estilo_normal = tablero.celdas[1][1].styleSheet()
-
+    # Verificar si la celda (2,3) está resaltada
     assert "border: 3px solid #ffcc00" in estilo_seleccionado
     assert "border: 3px solid #ffcc00" not in estilo_normal
 
@@ -107,3 +107,4 @@ def test_3keyPressEvent(app, capsys):
     # Verificar que stdout de (3,2) al pulsar la tecla Z
 
     assert "(3, 2)" in captured.out
+

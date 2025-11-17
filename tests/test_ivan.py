@@ -103,7 +103,7 @@ def simular_tecla(widget, tecla):
 def test_3keyPressEvent():
     tablero = Tablero()
 
-    for _ in range(7):
+    for _ in range(8):
         simular_tecla(tablero, Qt.Key.Key_Down)
 
     for _ in range(4):

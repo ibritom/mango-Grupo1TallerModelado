@@ -32,7 +32,7 @@ def test_resaltar_celda():
     celda = tablero.celdas[2][3]
     estilo = celda.styleSheet()
 
-    assert "#123456" in estilo   # Fuerza el fallo
+    assert "#ffcc00" in estilo, "La celda seleccionada no se resaltó correctamente."
 
 
 def test_resaltar_celda_no_colorea_otras():

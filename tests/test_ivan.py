@@ -44,7 +44,7 @@ def test_2resaltar_celda(app):
 
     # Y la celda (0,0) ya NO debe estar resaltada (salvo que sea roja, pero no lo es)
     assert "border: 3px solid #ffcc00" not in estilo_otra
-    
+
 def test_3resaltar_celda(app):
     tablero = Tablero()
     filas = tablero.filas
@@ -102,7 +102,7 @@ def simular_tecla(widget, tecla):
 def test_3keyPressEvent():
     tablero = Tablero()
 
-    for _ in range(8):
+    for _ in range(7):
         simular_tecla(tablero, Qt.Key.Key_Down)
 
     for _ in range(4):

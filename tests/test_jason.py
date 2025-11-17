@@ -1,3 +1,5 @@
+import os
+os.environ["QT_QPA_PLATFORM"] = "offscreen"
 import sys
 from pathlib import Path
 import pytest
@@ -103,4 +105,5 @@ def test_3keyPressEvent(app, capsys):
     captured = capsys.readouterr()
 
     # Verificar que stdout de (3,2) al pulsar la tecla Z
+
     assert "(3, 2)" in captured.out
